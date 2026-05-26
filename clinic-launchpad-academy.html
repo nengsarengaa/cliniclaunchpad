@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Launchpad Academy — The Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#181512;--cream:#F4EFE6;--warm:#FAF7F2;--forest:#253D30;--moss:#4A7056;--gold:#B8873A;--gold-lt:#D4A85C;--mid:#5A5450;--rule:rgba(24,21,18,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+.announce-bar{background:var(--forest);color:rgba(244,239,230,0.9);text-align:center;padding:0.65rem 2rem;font-size:0.8rem;position:fixed;top:0;left:0;right:0;z-index:501}
+.announce-bar a{color:var(--gold-lt);text-decoration:none;font-weight:600}
+nav{position:fixed;top:2.35rem;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(244,239,230,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--forest);line-height:1.2;text-decoration:none}
+.nav-logo-sub{display:block;font-family:'Jost',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-link{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--forest)}
+.nav-phone{font-size:0.82rem;font-weight:600;color:var(--forest);text-decoration:none}
+.nav-btn{background:var(--gold);color:var(--ink);text-decoration:none;padding:0.65rem 1.5rem;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.2s}
+.nav-btn:hover{background:var(--gold-lt)}
+
+.eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
+.eyebrow-lt{color:var(--gold-lt)}
+.sec{padding:7rem 4rem}
+.inner{max-width:1100px;margin:0 auto}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.two-col-eq{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+
+/* HERO */
+.hero{background:var(--ink);min-height:75vh;display:grid;grid-template-columns:55% 45%;align-items:center;padding:11rem 4rem 6rem;position:relative;overflow:hidden}
+.hero::after{content:'CLA';position:absolute;right:-1rem;bottom:-4rem;font-family:'Playfair Display',serif;font-size:22rem;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none}
+.hero-left{position:relative;z-index:2}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1.0;letter-spacing:-0.03em;color:#F4EFE6;margin-bottom:1.75rem}
+.hero h1 em{font-style:italic;color:var(--gold-lt)}
+.hero-sub{font-size:1.15rem;line-height:1.8;color:#908880;font-weight:300;max-width:500px;margin-bottom:2.5rem}
+.hero-sub strong{color:#D0C8C0;font-weight:600}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--ink);text-decoration:none;padding:1rem 2rem;font-size:0.88rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;display:inline-block}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-ghost-lt{border:1.5px solid rgba(244,239,230,0.25);color:#C0B8B0;text-decoration:none;padding:1rem 2rem;font-size:0.88rem;font-weight:500;transition:all 0.2s;display:inline-block}
+.btn-ghost-lt:hover{border-color:var(--gold);color:var(--gold-lt)}
+.hero-right{position:relative;z-index:2;display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.05)}
+.hproof{background:rgba(37,61,48,0.45);padding:2rem}
+.hproof-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block}
+.hproof-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:#F4EFE6;margin-bottom:0.3rem}
+.hproof-body{font-size:0.85rem;color:#8AAA98;line-height:1.5;font-weight:300}
+
+/* FOR WHO */
+.stages-section{background:var(--cream)}
+.stage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);margin-top:4rem}
+.stage{background:var(--cream);padding:3rem 2rem;border-top:3px solid transparent;transition:all 0.2s}
+.stage:hover{background:var(--warm);border-top-color:var(--gold)}
+.stage-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.stage-n{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:block}
+.stage h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--forest);margin-bottom:0.85rem;line-height:1.25}
+.stage p{font-size:0.95rem;color:var(--mid);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
+.stage-gets{list-style:none}
+.stage-gets li{font-size:0.88rem;color:var(--mid);padding:0.45rem 0 0.45rem 1.25rem;border-top:1px solid var(--rule);position:relative;line-height:1.4}
+.stage-gets li::before{content:'✓';position:absolute;left:0;color:var(--moss);font-size:0.75rem;top:0.5rem}
+
+/* COACHING SECTION */
+.coaching-section{background:var(--forest)}
+.coaching-banner{text-align:center;padding:5rem 4rem 4rem;max-width:800px;margin:0 auto}
+.coaching-banner h2{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5rem);line-height:1.0;letter-spacing:-0.03em;color:#F4EFE6;margin-bottom:1.25rem}
+.coaching-banner h2 em{font-style:italic;color:var(--gold-lt)}
+.coaching-banner p{font-size:1.15rem;color:#A8C0B0;line-height:1.8;font-weight:300}
+.coaching-banner p strong{color:#E8E0D8;font-weight:600}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);margin:0 4rem 7rem}
+.pillar{background:rgba(37,61,48,0.5);padding:3rem 2.5rem;transition:background 0.25s}
+.pillar:hover{background:rgba(37,61,48,0.9)}
+.pillar:hover .pt,.pillar:hover .pn{color:#F4EFE6}
+.pillar:hover .pb{color:#A8C0B0}
+.pillar:hover .pl li{color:#8AAA98;border-top-color:rgba(255,255,255,0.07)}
+.pillar:hover .pl li::before{color:var(--gold-lt)}
+.pi{font-size:2.2rem;margin-bottom:1.25rem;display:block}
+.pn{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:0.6rem;display:block;transition:color 0.25s}
+.pt{font-family:'Playfair Display',serif;font-size:1.4rem;color:#F4EFE6;margin-bottom:0.75rem;transition:color 0.25s}
+.pb{font-size:0.95rem;color:#8AAA98;line-height:1.75;margin-bottom:1.5rem;font-weight:300;transition:color 0.25s}
+.pl{list-style:none}
+.pl li{font-size:0.88rem;color:#7A9A88;padding:0.5rem 0 0.5rem 1rem;border-top:1px solid rgba(255,255,255,0.06);position:relative;line-height:1.4;transition:all 0.25s}
+.pl li::before{content:'›';position:absolute;left:0;color:var(--gold-lt);transition:color 0.25s}
+
+/* CURRICULUM */
+.curriculum-section{background:var(--warm)}
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);margin-top:4rem}
+.module{background:var(--warm);padding:2.5rem 2rem;transition:background 0.2s}
+.module:hover{background:var(--cream)}
+.module-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block}
+.module-num{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;color:var(--gold);margin-bottom:0.5rem;display:block}
+.module h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:0.6rem}
+.module-body{font-size:0.92rem;color:var(--mid);line-height:1.7;font-weight:300;margin-bottom:1.25rem}
+.module-topics{list-style:none}
+.module-topics li{font-size:0.83rem;color:var(--mid);padding:0.35rem 0 0.35rem 1rem;border-top:1px solid var(--rule);position:relative}
+.module-topics li::before{content:'›';position:absolute;left:0;color:var(--moss)}
+
+/* ENGINE */
+.engine-section{background:var(--ink)}
+.engine-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.engine-left h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.engine-left h2 em{font-style:italic;color:var(--gold-lt)}
+.engine-body{font-size:1.05rem;line-height:1.85;color:#908880;font-weight:300;margin-bottom:1rem}
+.engine-body strong{color:#D0C8C0;font-weight:500}
+.engine-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(184,135,58,0.12);border:1px solid rgba(184,135,58,0.3);padding:0.5rem 1rem;margin-top:1rem}
+.engine-badge span{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-lt)}
+.engine-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06)}
+.engine-tile{background:#1A1612;padding:2rem;transition:background 0.2s}
+.engine-tile:hover{background:#201C18}
+.engine-tile-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block}
+.engine-tile h4{font-size:0.95rem;font-weight:600;color:#E8E0D8;margin-bottom:0.35rem}
+.engine-tile p{font-size:0.85rem;color:#706860;line-height:1.6;font-weight:300}
+
+/* FAQ */
+.faq-section{background:var(--cream)}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--rule);margin-top:3rem}
+.faq-item{background:var(--cream);padding:1.75rem 2rem;cursor:pointer}
+.faq-q{font-size:1rem;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;line-height:1.4}
+.faq-q::after{content:'+';font-size:1.3rem;color:var(--gold);font-weight:300;flex-shrink:0}
+.faq-a{font-size:0.95rem;color:var(--mid);line-height:1.8;font-weight:300;margin-top:1rem;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+
+/* CANADA */
+.canada-section{background:var(--forest)}
+.canada-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.canada-body{font-size:1rem;line-height:1.85;color:#A8C0B0;font-weight:300;margin-top:1rem}
+.canada-body strong{color:#E8E0D8;font-weight:500}
+.canada-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.08)}
+.canada-stat{background:rgba(37,61,48,0.5);padding:1.75rem 1.5rem}
+.canada-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold-lt);line-height:1;margin-bottom:0.3rem}
+.canada-stat-label{font-size:0.78rem;color:#8AAA98;line-height:1.4}
+
+/* FINAL CTA */
+.final{background:var(--gold);padding:7rem 4rem;text-align:center;position:relative;overflow:hidden}
+.final::before{content:'APPLY';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:18vw;color:rgba(24,21,18,0.05);white-space:nowrap;pointer-events:none}
+.final-inner{max-width:700px;margin:0 auto;position:relative}
+.final h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem}
+.final h2 em{font-style:italic}
+.final p{font-size:1.1rem;color:rgba(24,21,18,0.65);line-height:1.75;font-weight:300;margin-bottom:2.5rem}
+.btn-dark{display:inline-block;background:var(--ink);color:#F4EFE6;text-decoration:none;padding:1.1rem 2.5rem;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;margin:0.4rem}
+.btn-dark:hover{background:var(--forest);transform:translateY(-2px)}
+.btn-outline-dark{display:inline-block;border:2px solid var(--ink);color:var(--ink);text-decoration:none;padding:1.1rem 2.5rem;font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:all 0.2s;margin:0.4rem}
+.btn-outline-dark:hover{background:var(--ink);color:#F4EFE6}
+
+footer{background:var(--ink);padding:3rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-logo-main{font-family:'Playfair Display',serif;font-size:1.1rem;color:#F4EFE6}
+.footer-logo-sub{display:block;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.footer-copy{font-size:0.78rem;color:#504840}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.78rem;color:#605850;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp 0.7s ease backwards}
+.hero h1{animation-delay:0.15s}.hero-sub{animation-delay:0.28s}.hero-btns{animation-delay:0.4s}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  .nav-right .nav-link{display:none}
+  .hero{grid-template-columns:1fr;padding:9rem 1.5rem 4rem}
+  .sec{padding:4rem 1.5rem}
+  .two-col,.engine-inner,.canada-inner{grid-template-columns:1fr;gap:2.5rem}
+  .stage-grid,.three-col,.pillars-grid{grid-template-columns:1fr}
+  .modules,.engine-tiles{grid-template-columns:1fr}
+  .pillars-grid{margin:0 1.5rem 4rem}
+  .coaching-banner{padding:4rem 1.5rem 3rem}
+  footer{padding:2rem 1.5rem;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="announce-bar">Opening a clinic · Growing one · Planning your exit — <a href="clinic-launchpad-workshop.html">Join the free workshop →</a></div>
+
+<nav>
+  <a href="clinic-launchpad-home.html" class="nav-logo">Clinic Launchpad<span class="nav-logo-sub">Academy</span></a>
+  <div class="nav-right">
+    <a href="clinic-launchpad-home.html" class="nav-link">Home</a>
+    <a href="clinic-launchpad-about.html" class="nav-link">About</a>
+    <a href="clinic-launchpad-academy.html" class="nav-link active">Academy</a>
+    <a href="clinic-launchpad-workshop.html" class="nav-link">Free Workshop</a>
+    <a href="tel:+1XXXXXXXXXX" class="nav-phone">+1 (XXX) XXX-XXXX</a>
+    <a href="clinic-launchpad-workshop.html" class="nav-btn">Free Workshop</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.5rem;">The Program</span>
+    <h1>Clinic Launchpad<br><em>Academy</em></h1>
+    <p class="hero-sub">The only clinic coaching program built by people who actually scaled and sold. <strong>We coach you directly</strong> — curriculum, 1-on-1 access, and a network that works for you long after you finish.</p>
+    <div class="hero-btns">
+      <a href="clinic-launchpad-workshop.html" class="btn-gold">Start Free — Join the Workshop</a>
+      <a href="#apply" class="btn-ghost-lt">Apply to the Academy</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hproof">
+      <span class="hproof-icon">🌱</span>
+      <div class="hproof-title">Opening a Clinic</div>
+      <p class="hproof-body">Get it right from day one — location, hiring, marketing, finances</p>
+    </div>
+    <div class="hproof">
+      <span class="hproof-icon">📈</span>
+      <div class="hproof-title">Growing a Clinic</div>
+      <p class="hproof-body">Build systems that let the clinic grow without you doing it all</p>
+    </div>
+    <div class="hproof">
+      <span class="hproof-icon">🚀</span>
+      <div class="hproof-title">Scaling to Multiple Locations</div>
+      <p class="hproof-body">Second location, bigger team, stronger brand — self-funded</p>
+    </div>
+    <div class="hproof">
+      <span class="hproof-icon">💼</span>
+      <div class="hproof-title">Exiting or Stepping Back</div>
+      <p class="hproof-body">Step back, sell, or retire into it — we've done it for 7 figures</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="stages-section sec">
+  <div class="inner">
+    <div class="two-col" style="margin-bottom:0">
+      <div>
+        <span class="eyebrow">Who It's For</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;letter-spacing:-0.02em;color:var(--ink)">Wherever you are.<br>There's a path <em style="font-style:italic;color:var(--forest)">forward.</em></h2>
+      </div>
+      <p style="font-size:1.05rem;line-height:1.85;color:var(--mid);font-weight:300;align-self:end">The Academy meets you at your stage. The framework is the same — the coaching is personalised to where you actually are right now. Whether you haven't opened yet or you've been running for 10 years.</p>
+    </div>
+    <div class="stage-grid">
+      <div class="stage">
+        <span class="stage-icon">🌱</span>
+        <span class="stage-n">Stage 01 — Opening</span>
+        <h3>Opening your first clinic and want to get it right.</h3>
+        <p>The decisions you make before you open determine everything that follows. Avoid the costly mistakes most first-time owners make in year one.</p>
+        <ul class="stage-gets">
+          <li>Choose and negotiate the right location</li>
+          <li>Build a financial model before you sign</li>
+          <li>Attract patients before you open</li>
+          <li>Get the foundation right from day one</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <span class="stage-icon">😤</span>
+        <span class="stage-n">Stage 02 — Stuck</span>
+        <h3>Have a clinic but can't grow past where you are.</h3>
+        <p>You're working in the business, not on it. Admin, treatments, covering gaps — there's no time to actually build. We'll fix that.</p>
+        <ul class="stage-gets">
+          <li>Pull yourself out of the day-to-day</li>
+          <li>Build a patient retention system</li>
+          <li>Fix staff recruitment for good</li>
+          <li>Create predictable, growing revenue</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <span class="stage-icon">🚀</span>
+        <span class="stage-n">Stage 03 — Scaling</span>
+        <h3>Ready to scale, add a location, or build toward an exit.</h3>
+        <p>The gap between one successful clinic and a multi-location business or seven-figure exit is systems, financial clarity, and knowing what a buyer looks for.</p>
+        <ul class="stage-gets">
+          <li>Open a second location self-funded</li>
+          <li>Know your clinic's value right now</li>
+          <li>Build toward your exit number</li>
+          <li>Step back without the clinic falling apart</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WE COACH YOU -->
+<section class="coaching-section">
+  <div class="coaching-banner">
+    <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1rem;">How It Works</span>
+    <h2>We coach you.<br><em>Directly.</em></h2>
+    <p>Not a course you watch and forget. Not a Facebook group. <strong>We coach you personally</strong> — with structured curriculum, direct 1-on-1 access to Michael and Caitlyn, and a network of clinic owners who actively build together.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <span class="pi">🎓</span>
+      <span class="pn">01 — The Academy</span>
+      <div class="pt">Training & Curriculum</div>
+      <p class="pb">Every module built from the ground up — from opening day to exit day. No borrowed frameworks, no theory.</p>
+      <ul class="pl">
+        <li>Opening & location strategy</li>
+        <li>Become a marketing machine</li>
+        <li>Patient growth & retention systems</li>
+        <li>Staff recruitment & culture</li>
+        <li>Admin systems — pull yourself out</li>
+        <li>Branding, website & digital presence</li>
+        <li>Financing & cash flow management</li>
+        <li>Exit planning & clinic valuation</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <span class="pi">🤝</span>
+      <span class="pn">02 — The Coaching</span>
+      <div class="pt">Michael & Caitlyn, Directly</div>
+      <p class="pb">Not a forum. Not a Facebook group. Direct access to founders who've scaled and sold exactly what you're building — personalised to your situation.</p>
+      <ul class="pl">
+        <li>Personalised growth roadmap</li>
+        <li>1-on-1 strategy sessions</li>
+        <li>Real-time problem solving</li>
+        <li>Accountability & check-ins</li>
+        <li>Multi-location expansion guidance</li>
+        <li>Exit preparation support</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <span class="pi">🔗</span>
+      <span class="pn">03 — The Network</span>
+      <div class="pt">The CL Clinic Network</div>
+      <p class="pb">Clinic owners who actively send each other patients, share hiring leads, and grow together. A real business asset — not just a community.</p>
+      <ul class="pl">
+        <li>Cross-clinic patient referrals</li>
+        <li>Staff & hiring connections</li>
+        <li>Preferred vendor partnerships</li>
+        <li>Collective buying power</li>
+        <li>Peer community of owners</li>
+        <li>National & global reach</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum-section sec">
+  <div class="inner">
+    <div class="two-col" style="margin-bottom:0">
+      <div>
+        <span class="eyebrow">The Curriculum</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;letter-spacing:-0.02em;color:var(--ink)">Eight modules.<br>Every lever in <em style="font-style:italic;color:var(--forest)">your clinic.</em></h2>
+      </div>
+      <p style="font-size:1.05rem;line-height:1.85;color:var(--mid);font-weight:300;align-self:end">Each module is built around a specific part of your clinic business — with real frameworks, scripts, and systems you can implement immediately. No padding. No filler.</p>
+    </div>
+    <div class="modules">
+      <div class="module">
+        <span class="module-icon">📍</span>
+        <span class="module-num">Module 01</span>
+        <h3>Opening & Location Strategy</h3>
+        <p class="module-body">The decisions you make before you open determine everything. Market selection, lease negotiation, fit-out, and pre-launch acquisition.</p>
+        <ul class="module-topics"><li>Market selection & location analysis</li><li>Lease negotiation & red flags</li><li>Pre-launch patient & staff acquisition</li><li>Financial model before you sign</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">📣</span>
+        <span class="module-num">Module 02</span>
+        <h3>Become a Marketing Machine</h3>
+        <p class="module-body">Attract the right patients — people who rebook consistently and refer their friends. Insurance or not. The system that filled four clinics.</p>
+        <ul class="module-topics"><li>Ideal patient profile & targeting</li><li>Local SEO & Google presence</li><li>Referral systems & partnerships</li><li>Social media that drives bookings</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">🔄</span>
+        <span class="module-num">Module 03</span>
+        <h3>Patient Retention System</h3>
+        <p class="module-body">Getting a new patient costs ten times more than keeping one. The rebooking framework that took our retention rate past 70%.</p>
+        <ul class="module-topics"><li>Rebooking systems that run automatically</li><li>Patient communication & follow-up</li><li>Experience standards that drive loyalty</li><li>Measuring & improving retention</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">👥</span>
+        <span class="module-num">Module 04</span>
+        <h3>Staff Recruitment & Culture</h3>
+        <p class="module-body">The biggest constraint on growth isn't patients — it's practitioners. Market to therapists the same way you market to patients.</p>
+        <ul class="module-topics"><li>Recruitment marketing & messaging</li><li>Interview & onboarding processes</li><li>Culture without micromanaging</li><li>Retention strategies that work</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">⚙️</span>
+        <span class="module-num">Module 05</span>
+        <h3>Admin Systems — Work ON the Business</h3>
+        <p class="module-body">You can't grow what you're too busy running. The systems we built to pull ourselves out of the day-to-day so we could focus on growth.</p>
+        <ul class="module-topics"><li>Admin delegation & support systems</li><li>Scheduling & capacity management</li><li>SOPs & training documentation</li><li>Software & tool stack for clinics</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">🎨</span>
+        <span class="module-num">Module 06</span>
+        <h3>Branding, Website & Digital</h3>
+        <p class="module-body">Build a brand patients trust, practitioners want to work for, and buyers will pay a premium for. From your website to your Google presence.</p>
+        <ul class="module-topics"><li>Brand positioning & niche</li><li>Website conversion optimisation</li><li>Online booking & reviews strategy</li><li>Local visibility & digital presence</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">💰</span>
+        <span class="module-num">Module 07</span>
+        <h3>Finance & Self-Funded Growth</h3>
+        <p class="module-body">We scaled four clinics with zero outside financing. Every expansion was funded by the business itself. Here's the financial model.</p>
+        <ul class="module-topics"><li>Clinic financial modelling</li><li>Cash flow management & forecasting</li><li>Self-funded expansion strategy</li><li>Revenue levers & profitability</li></ul>
+      </div>
+      <div class="module">
+        <span class="module-icon">🚪</span>
+        <span class="module-num">Module 08</span>
+        <h3>Exit Planning & Clinic Valuation</h3>
+        <p class="module-body">Know what your clinic is worth today. Whether you want to sell, step back, or retire — build toward your number starting now.</p>
+        <ul class="module-topics"><li>Clinic valuation fundamentals</li><li>What buyers actually look for</li><li>Buyer-ready documentation</li><li>Sale, step-back, or retire — your framework</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING ENGINE -->
+<section class="engine-section sec">
+  <div class="engine-inner">
+    <div class="engine-left">
+      <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.25rem;">The Marketing Engine</span>
+      <h2>Most clinics are invisible.<br><em>Yours won't be.</em></h2>
+      <p class="engine-body">Michael has 20 years of marketing experience — websites, brand building, paid advertising, local SEO. Inside the Academy <strong>we coach you on how to dominate your local market</strong> and attract the right patients consistently.</p>
+      <p class="engine-body" style="margin-top:1rem;">We also coach you on niching down — dialling into exactly what kind of clinic you want to build. <strong>A well-positioned clinic attracts better patients, better staff, and commands higher prices.</strong></p>
+      <p class="engine-body" style="margin-top:1rem;">For members who want it handled for them — our partner service <strong>LeadLocalSEO</strong> takes it all off your plate.</p>
+      <div class="engine-badge"><span>✦ Done-for-you option via LeadLocalSEO</span></div>
+    </div>
+    <div class="engine-tiles">
+      <div class="engine-tile"><span class="engine-tile-icon">📍</span><h4>Google Maps Domination</h4><p>Own the local map pack. Be the first clinic patients see when they search in your area.</p></div>
+      <div class="engine-tile"><span class="engine-tile-icon">🎯</span><h4>Google & Facebook Ads</h4><p>Paid advertising that converts — built for clinic owners, not generic businesses.</p></div>
+      <div class="engine-tile"><span class="engine-tile-icon">🌐</span><h4>Website & Brand Building</h4><p>A brand and website that reflects quality and converts visitors into booked patients.</p></div>
+      <div class="engine-tile"><span class="engine-tile-icon">🔍</span><h4>Niche & Positioning</h4><p>Dial in your ideal clinic and attract the patients and staff who fit perfectly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section sec">
+  <div class="inner" style="max-width:900px">
+    <span class="eyebrow">Common Questions</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;letter-spacing:-0.02em;color:var(--ink)">Real answers to the questions<br>you're <em style="font-style:italic;color:var(--forest)">actually asking.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">I don't have time for another program on top of running my clinic.</div><div class="faq-a">This is the most common thing we hear — and it's why we built the Academy the way we did. Most members spend 2–3 hours per week. The systems you build will give you back far more time than you put in. You're building your way out of the time trap, not deeper into it.</div></div>
+      <div class="faq-item"><div class="faq-q">I've tried business coaching before and it didn't work.</div><div class="faq-a">We actually built and sold the exact thing you're trying to build — in Canada. We're not coaches who studied clinic growth. The curriculum isn't borrowed from generic frameworks. It's the specific playbook we used. No program works without your commitment though — we'll show up fully if you do.</div></div>
+      <div class="faq-item"><div class="faq-q">I'm just starting out — is this too advanced for me?</div><div class="faq-a">The earlier you start with the right framework, the better. Many members join before they've opened their first clinic. Getting the foundation right from day one saves years of costly trial and error.</div></div>
+      <div class="faq-item"><div class="faq-q">I'm not thinking about selling. Is exit planning still relevant?</div><div class="faq-a">Yes — and here's why. Building with an exit mindset means building a business that runs without you. That's equally valuable whether you sell, step back, or keep it forever. Most members who came in with no intention to sell end up rethinking that after seeing what their clinic could be worth.</div></div>
+      <div class="faq-item"><div class="faq-q">How is this different from Clinic Mastery or other programs?</div><div class="faq-a">Clinic Mastery is an Australian program — it doesn't understand Canadian insurance billing, provincial licensing, or RMT-specific dynamics. We built our clinic inside the Canadian market. We also offer the CL Network with active cross-clinic patient referrals, and done-for-you marketing through LeadLocalSEO. And we actually sold — for seven figures.</div></div>
+      <div class="faq-item"><div class="faq-q">I can't afford it right now.</div><div class="faq-a">Start with the free workshop — it costs nothing and gives you the full framework. We'll have an honest conversation about timing. We're not interested in putting clinic owners under financial pressure. The workshop alone will give you things you can act on immediately.</div></div>
+      <div class="faq-item"><div class="faq-q">What does the coaching commitment look like?</div><div class="faq-a">The Academy runs as a cohort-based program with structured curriculum, live group coaching, and 1-on-1 sessions with Michael and Caitlyn. We'll cover full details on your application call. Plan for 2–3 hours per week of focused work.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CANADA -->
+<section class="canada-section sec">
+  <div class="canada-inner">
+    <div>
+      <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.25rem;">🇨🇦 Built in Canada. For Canada.</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em">The only program built<br>inside the <em style="font-style:italic;color:var(--gold-lt)">Canadian market.</em></h2>
+      <p class="canada-body">Generic programs built in Australia or the US don't understand direct billing, provincial licensing, or how Canadian health benefits drive patient demand. <strong>We built our clinic in Vancouver, BC. This is the playbook for the Canadian market — and it works worldwide too.</strong></p>
+    </div>
+    <div class="canada-stats">
+      <div class="canada-stat"><div class="canada-stat-num">23,000+</div><div class="canada-stat-label">Regulated RMTs across Canada</div></div>
+      <div class="canada-stat"><div class="canada-stat-num">8.4%</div><div class="canada-stat-label">Industry growth CAGR to 2034</div></div>
+      <div class="canada-stat"><div class="canada-stat-num">Insurance</div><div class="canada-stat-label">Driven demand in employer health plans</div></div>
+      <div class="canada-stat"><div class="canada-stat-num">Vancouver</div><div class="canada-stat-label">BC — where we built and sold ours</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="apply">
+  <div class="final-inner">
+    <h2>Ready to build something<br>worth <em>stepping away from?</em></h2>
+    <p>Start free with the workshop — or apply to the Academy directly and we'll be in touch within 48 hours.</p>
+    <div>
+      <a href="clinic-launchpad-workshop.html" class="btn-dark">Join the Free Workshop</a>
+      <a href="mailto:hello@cliniclaunchpad.com" class="btn-outline-dark">Apply to the Academy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="footer-logo-main">Clinic Launchpad</div><span class="footer-logo-sub">Academy</span></div>
+  <div class="footer-links">
+    <a href="clinic-launchpad-home.html">Home</a><a href="clinic-launchpad-about.html">About</a>
+    <a href="clinic-launchpad-workshop.html">Free Workshop</a><a href="#">Privacy</a><a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Clinic Launchpad Academy · Michael & Caitlyn Coombe</div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{const o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!o)item.classList.add('open')})});
+</script>
+</body>
+</html>

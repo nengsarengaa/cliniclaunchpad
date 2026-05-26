@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Workshop — Clinic Launchpad Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#181512;--cream:#F4EFE6;--warm:#FAF7F2;--forest:#253D30;--moss:#4A7056;--gold:#B8873A;--gold-lt:#D4A85C;--mid:#5A5450;--rule:rgba(24,21,18,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden}
+
+.announce-bar{background:var(--gold);color:var(--ink);text-align:center;padding:0.65rem 2rem;font-size:0.82rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:501;letter-spacing:0.02em}
+nav{position:fixed;top:2.35rem;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(24,21,18,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.07)}
+.nav-logo{line-height:1.25;text-decoration:none}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:1rem;color:#F4EFE6}
+.nav-logo-sub{display:block;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.nav-links{display:flex;align-items:center;gap:1.75rem}
+.nav-link{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#908880;text-decoration:none;transition:color 0.2s}
+.nav-link:hover{color:var(--gold-lt)}
+.nav-phone{font-size:0.82rem;font-weight:600;color:var(--gold-lt);text-decoration:none}
+.nav-cta{background:var(--gold);color:var(--ink);text-decoration:none;padding:0.6rem 1.4rem;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold-lt)}
+
+.eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
+.eyebrow-lt{color:var(--gold-lt)}
+.sec{padding:7rem 4rem}
+.inner{max-width:1100px;margin:0 auto}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;padding:10rem 4rem 6rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 65% 40%,rgba(37,61,48,0.3) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'FREE';position:absolute;right:-2rem;bottom:-5rem;font-family:'Playfair Display',serif;font-size:22rem;color:rgba(255,255,255,0.02);line-height:1;pointer-events:none}
+.hero-left{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(184,135,58,0.15);border:1px solid rgba(184,135,58,0.35);padding:0.4rem 1rem;margin-bottom:2rem}
+.hero-badge span{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-lt)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.05;letter-spacing:-0.02em;color:#F4EFE6;margin-bottom:1.75rem}
+.hero h1 em{font-style:italic;color:var(--gold-lt)}
+.hero h1 strong{color:#fff;font-weight:700}
+.hero-promise{font-size:1.1rem;line-height:1.8;color:#A8A09A;max-width:560px;margin-bottom:2.5rem;font-weight:300}
+.hero-promise strong{color:#D8D0C8;font-weight:500}
+.hero-takes{list-style:none;margin-bottom:3rem;display:flex;flex-direction:column;gap:0.85rem}
+.hero-takes li{display:flex;align-items:flex-start;gap:0.75rem;font-size:1rem;color:#C0B8B0;line-height:1.5}
+.ti{color:var(--gold);font-size:0.75rem;margin-top:0.38rem;flex-shrink:0}
+.hero-meta{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.meta-item{display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:#908880}
+.meta-item strong{color:#C8C0B8;font-weight:500}
+
+/* SIGNUP CARD */
+.signup-card{background:#F4EFE6;padding:3rem 2.5rem;position:relative;z-index:2;box-shadow:0 40px 100px rgba(0,0,0,0.6)}
+.card-strip{background:var(--forest);padding:0.9rem 1rem;margin-bottom:1.75rem;text-align:center}
+.card-strip p{font-size:0.82rem;color:#C0D8C8;line-height:1.4}
+.card-strip strong{color:#F4EFE6}
+.card-ey{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;display:block}
+.card h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--ink);margin-bottom:0.4rem;line-height:1.25}
+.card-sub{font-size:0.85rem;color:var(--mid);margin-bottom:1.75rem;line-height:1.5}
+.form-field{margin-bottom:0.9rem}
+.form-label{display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem}
+.form-field input,.form-field select{width:100%;background:var(--warm);border:1.5px solid rgba(24,21,18,0.12);color:var(--ink);padding:0.85rem 1rem;font-family:'Jost',sans-serif;font-size:0.92rem;outline:none;transition:border-color 0.2s;appearance:none}
+.form-field input::placeholder{color:#A09890}
+.form-field input:focus,.form-field select:focus{border-color:var(--gold)}
+.form-submit{width:100%;background:var(--forest);color:#F4EFE6;border:none;padding:1.1rem;font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold);color:var(--ink)}
+.form-note{font-size:0.72rem;color:var(--mid);text-align:center;margin-top:1rem;line-height:1.5;display:flex;align-items:flex-start;gap:0.5rem}
+
+/* NOT FOR / IS FOR */
+.filters{background:#161210;padding:5rem 4rem;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.filters-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.filter-block h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:#F4EFE6;margin-bottom:2rem;line-height:1.2}
+.filter-list{list-style:none}
+.filter-list li{font-size:0.97rem;padding:0.8rem 0 0.8rem 1.75rem;border-bottom:1px solid rgba(255,255,255,0.05);position:relative;line-height:1.5}
+.filter-list li::before{position:absolute;left:0;font-size:0.8rem;top:0.88rem}
+.no-list li{color:#908880}.no-list li::before{content:'✕';color:#6A4A4A}
+.yes-list li{color:#C0B8B0}.yes-list li::before{content:'✓';color:var(--moss)}
+.filter-list li:last-child{border-bottom:none}
+
+/* PAIN */
+.pain-sec{background:var(--ink)}
+.pain-head{text-align:center;max-width:720px;margin:0 auto 4rem}
+.pain-head h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em;margin-bottom:1.25rem}
+.pain-head h2 em{font-style:italic;color:var(--gold-lt)}
+.pain-head p{font-size:1.05rem;color:#908880;line-height:1.75;font-weight:300}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.pain-card{background:#1A1612;padding:2.5rem 2rem}
+.pain-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.pain-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.pain-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#E0D8D0;margin-bottom:0.85rem;line-height:1.3}
+.pain-card p{font-size:0.92rem;color:#908880;line-height:1.75;font-weight:300}
+
+/* AGENDA */
+.agenda-sec{background:var(--forest)}
+.agenda-head{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+.agenda-head h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em}
+.agenda-head h2 em{font-style:italic;color:var(--gold-lt)}
+.agenda-head p{font-size:1.05rem;color:#A8C0B0;line-height:1.8;font-weight:300}
+.agenda-head p strong{color:#E8E0D8;font-weight:500}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,0.08)}
+.agenda-item{background:rgba(37,61,48,0.55);padding:2.5rem 2rem;display:grid;grid-template-columns:60px 1fr;gap:1.5rem;align-items:start;transition:background 0.2s}
+.agenda-item:hover{background:rgba(37,61,48,0.9)}
+.agenda-icon{font-size:1.75rem;margin-top:0.1rem}
+.agenda-time{font-family:'Playfair Display',serif;font-size:0.82rem;color:var(--gold-lt);line-height:1.3;margin-bottom:0.2rem}
+.agenda-content h4{font-size:1rem;font-weight:600;color:#F4EFE6;margin-bottom:0.4rem}
+.agenda-content p{font-size:0.88rem;color:#8AAA98;line-height:1.7;font-weight:300}
+
+/* VALUE STACK */
+.value-sec{background:#161210}
+.value-head{margin-bottom:4rem}
+.value-head h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em;margin-bottom:0.75rem}
+.value-head h2 em{font-style:italic;color:var(--gold-lt)}
+.value-head p{font-size:1.05rem;color:#908880;font-weight:300;line-height:1.75}
+.value-items{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.05);margin-bottom:3rem}
+.value-item{background:#161210;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;padding:1.75rem 2rem;transition:background 0.2s}
+.value-item:hover{background:#1C1814}
+.vi-left{display:flex;align-items:flex-start;gap:1.25rem}
+.vi-icon{font-size:1.5rem;flex-shrink:0;margin-top:0.1rem}
+.vi-text h4{font-size:0.97rem;font-weight:600;color:#E8E0D8;margin-bottom:0.2rem}
+.vi-text p{font-size:0.85rem;color:#706860;line-height:1.5;font-weight:300}
+.vi-price{text-align:right;flex-shrink:0}
+.vi-was{font-size:0.75rem;color:#504840;text-decoration:line-through;display:block}
+.vi-val{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold-lt)}
+.value-total{background:var(--forest);padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.vt-left h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#F4EFE6}
+.vt-left p{font-size:0.85rem;color:#A8C0B0;margin-top:0.2rem}
+.vt-right{display:flex;align-items:baseline;gap:1rem}
+.vt-was{font-size:1.1rem;color:rgba(244,239,230,0.25);text-decoration:line-through}
+.vt-free{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--gold-lt);line-height:1}
+
+/* ABOUT */
+.about-sec{background:var(--forest)}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.about-left h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);line-height:1.15;color:#F4EFE6;margin-bottom:1.5rem}
+.about-body{font-size:1.05rem;color:#A8C0B0;line-height:1.85;font-weight:300;margin-bottom:1rem}
+.about-body strong{color:#E8E0D8;font-weight:500}
+.about-creds{margin-top:2rem}
+.about-cred{display:flex;align-items:center;gap:0.75rem;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.92rem;color:#A8C0B0}
+.about-cred:last-child{border-bottom:none}
+.cred-icon{font-size:1rem;flex-shrink:0}
+.about-card{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);padding:3rem}
+.about-quote{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;line-height:1.65;color:#E8E0D8;padding-left:1.5rem;border-left:2px solid var(--gold);margin-bottom:2rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.07)}
+.about-stat{background:rgba(37,61,48,0.5);padding:1.25rem}
+.about-stat-num{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold-lt);line-height:1;margin-bottom:0.25rem}
+.about-stat-label{font-size:0.77rem;color:#8AAA98;line-height:1.4}
+
+/* PROOF */
+.proof-sec{background:var(--ink);border-top:1px solid rgba(255,255,255,0.05)}
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);margin-top:4rem}
+.testi{background:#1A1612;padding:2.5rem 2rem}
+.testi-stars{color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:1.25rem}
+.testi-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;line-height:1.75;color:#D0C8C0;margin-bottom:1.75rem}
+.testi-name{font-size:0.9rem;font-weight:600;color:#E8E0D8;margin-bottom:0.15rem}
+.testi-role{font-size:0.8rem;color:#807870}
+
+/* FAQ */
+.faq-sec{background:#161210;border-top:1px solid rgba(255,255,255,0.05)}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.05);margin-top:3rem;max-width:900px}
+.faq-item{background:#161210;padding:1.75rem 2rem;cursor:pointer}
+.faq-q{font-size:1rem;font-weight:600;color:#E8E0D8;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;line-height:1.4}
+.faq-q::after{content:'+';font-size:1.3rem;color:var(--gold);font-weight:300;flex-shrink:0}
+.faq-a{font-size:0.95rem;color:#908880;line-height:1.8;font-weight:300;margin-top:1rem;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+
+/* FINAL CTA */
+.final{background:var(--gold);padding:7rem 4rem;text-align:center;position:relative;overflow:hidden}
+.final::before{content:'JOIN US';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:14vw;color:rgba(24,21,18,0.05);white-space:nowrap;pointer-events:none;line-height:1}
+.final-inner{max-width:800px;margin:0 auto;position:relative}
+.final h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem}
+.final h2 em{font-style:italic}
+.final p{font-size:1.1rem;color:rgba(24,21,18,0.65);line-height:1.75;font-weight:300;margin-bottom:3rem}
+.final-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0;max-width:860px;margin:0 auto;background:var(--ink)}
+.final-form input{background:#F4EFE6;border:none;border-right:1px solid rgba(24,21,18,0.12);color:var(--ink);padding:1rem 1.25rem;font-family:'Jost',sans-serif;font-size:0.92rem;outline:none;width:100%}
+.final-form input::placeholder{color:#A09890}
+.final-form button{background:var(--forest);color:#F4EFE6;border:none;padding:1rem 1.75rem;font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.final-form button:hover{background:var(--ink)}
+.final-note{font-size:0.78rem;color:rgba(24,21,18,0.45);margin-top:1.25rem}
+
+footer{background:var(--ink);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-logo-main{font-family:'Playfair Display',serif;font-size:1rem;color:#F4EFE6}
+.footer-logo-sub{display:block;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.footer-copy{font-size:0.75rem;color:#504840}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.75rem;color:#605850;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp 0.7s ease backwards}
+.hero-badge{animation-delay:0.1s}.hero h1{animation-delay:0.2s}
+.hero-promise{animation-delay:0.32s}.hero-takes{animation-delay:0.44s}
+.signup-card{animation:fadeUp 0.7s 0.3s ease backwards}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;top:2rem}
+  .nav-links .nav-link{display:none}
+  .hero{grid-template-columns:1fr;padding:8rem 1.5rem 4rem;gap:3rem}
+  .sec{padding:4rem 1.5rem}
+  .filters,.filters-inner,.about-inner,.agenda-head{grid-template-columns:1fr;gap:2.5rem}
+  .filters{padding:4rem 1.5rem}
+  .pain-grid,.testimonials,.agenda{grid-template-columns:1fr}
+  .agenda-item{grid-template-columns:1fr;gap:0.5rem}
+  .final-form{grid-template-columns:1fr}
+  .final-form input{border-right:none;border-bottom:1px solid rgba(24,21,18,0.12)}
+  footer{padding:2rem 1.5rem;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="announce-bar">🇨🇦 Free Live Workshop — Limited to 50 spots per session</div>
+
+<nav>
+  <a href="clinic-launchpad-home.html" class="nav-logo">
+    <div class="nav-logo-main">Clinic Launchpad</div>
+    <span class="nav-logo-sub">Academy</span>
+  </a>
+  <div class="nav-links">
+    <a href="clinic-launchpad-home.html" class="nav-link">Home</a>
+    <a href="clinic-launchpad-about.html" class="nav-link">About</a>
+    <a href="clinic-launchpad-academy.html" class="nav-link">Academy</a>
+    <a href="tel:+1XXXXXXXXXX" class="nav-phone">+1 (XXX) XXX-XXXX</a>
+    <a href="#register" class="nav-cta">Save My Spot</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="badge-dot"></div><span>Free Live Workshop · Limited Spots</span></div>
+    <h1>How we built a<br><em>7-figure clinic</em><br>— and the <strong>exact<br>playbook</strong> for yours.</h1>
+    <p class="hero-promise">Michael and Caitlyn Coombe built one room into 4 clinics, 3,500 patients/month, and 75 staff in Vancouver, BC — then sold for seven figures. <strong>In 60 minutes they share the full framework — including how to pull yourself out of the day-to-day and build toward freedom.</strong></p>
+    <ul class="hero-takes">
+      <li><span class="ti">✦</span> The real story — how two people built a 7-figure Canadian clinic from nothing</li>
+      <li><span class="ti">✦</span> Why most clinic owners stay stuck or burn out — and what breaks the pattern</li>
+      <li><span class="ti">✦</span> How to become a marketing machine and attract patients who rebook and refer</li>
+      <li><span class="ti">✦</span> The admin & systems engine that pulls you out of the day-to-day</li>
+      <li><span class="ti">✦</span> Patient retention & staff recruitment — fix these two, fix almost everything</li>
+      <li><span class="ti">✦</span> What your clinic is worth — and how to build toward passive income, scale, or a sale</li>
+    </ul>
+    <div class="hero-meta">
+      <div class="meta-item">⏱ <strong>60 min</strong> &nbsp;live</div>
+      <div class="meta-item">💻 <strong>Zoom</strong></div>
+      <div class="meta-item">🎁 <strong>Free</strong> &nbsp;no pitch</div>
+      <div class="meta-item">🪑 <strong>50 spots</strong> max</div>
+    </div>
+  </div>
+  <div class="signup-card" id="register">
+    <div class="card-strip"><p>Valued at <strong>$497</strong> — yours free when you register</p></div>
+    <span class="card-ey">Save Your Spot</span>
+    <h2 class="card">Join the Free Workshop</h2>
+    <p class="card-sub">30 seconds to register. We'll send your Zoom link and a short pre-workshop guide.</p>
+    <div class="form-field"><label class="form-label">First Name</label><input type="text" placeholder="e.g. Sarah"></div>
+    <div class="form-field"><label class="form-label">Email Address</label><input type="email" placeholder="you@yourclinic.com"></div>
+    <div class="form-field">
+      <label class="form-label">Where are you right now?</label>
+      <select>
+        <option value="" disabled selected>Select your stage</option>
+        <option>I want to open my first clinic</option>
+        <option>I have a clinic but it's not growing</option>
+        <option>I want to open a second location</option>
+        <option>I want to step back from treating</option>
+        <option>I want to build toward an exit or sale</option>
+        <option>I'm burnt out and need a plan</option>
+      </select>
+    </div>
+    <button class="form-submit">Save My Spot — It's Free →</button>
+    <p class="form-note"><span>🔒</span><span>No spam. No hard sell. No pitch at the end. Unsubscribe any time.</span></p>
+  </div>
+</section>
+
+<!-- IS FOR / NOT FOR -->
+<section class="filters">
+  <div class="filters-inner">
+    <div>
+      <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.25rem;">This is NOT for you if...</span>
+      <h3 class="filter-block" style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#F4EFE6;margin-bottom:2rem;line-height:1.2">Be honest with yourself.</h3>
+      <ul class="filter-list no-list">
+        <li>You're completely happy with how your clinic runs right now</li>
+        <li>You want overnight results with no real work</li>
+        <li>You're not open to thinking differently about your business</li>
+        <li>You've already got it all figured out</li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.25rem;">This IS for you if...</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#F4EFE6;margin-bottom:2rem;line-height:1.2">You're ready for something different.</h3>
+      <ul class="filter-list yes-list">
+        <li>You want to stop being the bottleneck in your own clinic</li>
+        <li>You're tired of figuring everything out alone</li>
+        <li>You want predictable revenue instead of anxious guesswork</li>
+        <li>You're thinking about scaling, a second location, or an exit</li>
+        <li>You want the freedom to treat on your terms — or not at all</li>
+        <li>You love the work but want the business to work without you</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-sec sec">
+  <div class="inner">
+    <div class="pain-head">
+      <span class="eyebrow" style="display:block;margin-bottom:1rem;">The Real Problem</span>
+      <h2>Great at the work.<br>Nobody taught you <em>the business.</em></h2>
+      <p style="margin-top:1.25rem">And the longer that gap stays open, the more it costs you — in money, in time, and in the energy you spend running a clinic that should be running itself.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="pain-icon">🌱</span>
+        <span class="pain-tag">The Launcher</span>
+        <h3>"I want to open a clinic but I don't know where to start — or what I don't know."</h3>
+        <p>You have the skills. But without a clear roadmap, most aspiring clinic owners stay stuck in research mode for years — or make expensive mistakes in year one that take years to recover from.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">😤</span>
+        <span class="pain-tag">The Stuck Owner</span>
+        <h3>"I opened my clinic but I'm still behind the table and can't seem to get ahead."</h3>
+        <p>You're working in the business instead of on it. Admin, scheduling, covering gaps. There's no time to actually build. The systems that fix this are learnable — they just weren't taught.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🚀</span>
+        <span class="pain-tag">The Ambitious Owner</span>
+        <h3>"I want to scale or eventually sell — but I can't see the path from here to there."</h3>
+        <p>The gap between one successful clinic and a multi-location business or a seven-figure exit is almost entirely about systems, financial clarity, and knowing what a buyer looks for. We closed that gap. We'll show you how.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda-sec sec">
+  <div class="inner">
+    <div class="agenda-head">
+      <div>
+        <span class="eyebrow eyebrow-lt">Workshop Agenda</span>
+        <h2>What you walk away<br>with — <em>in 60 minutes.</em></h2>
+      </div>
+      <p>This isn't a teaser. It's the real framework — delivered in full in one session. <strong>You'll leave with a written action plan for your specific situation, whatever stage you're at.</strong></p>
+    </div>
+    <div class="agenda">
+      <div class="agenda-item">
+        <div><span class="agenda-icon">🏆</span></div>
+        <div>
+          <div class="agenda-time">0–10 min</div>
+          <h4 class="agenda-content">Our Story — 1 Room to a 7-Figure Exit</h4>
+          <p class="agenda-content">The real story — hard parts included. One treatment room, no roadmap, no financing. Six years later: 4 clinics, 75 staff, a seven-figure sale in Vancouver, BC.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div><span class="agenda-icon">🔍</span></div>
+        <div>
+          <div class="agenda-time">10–20 min</div>
+          <h4 class="agenda-content">Why Most Clinic Owners Stay Stuck or Burn Out</h4>
+          <p class="agenda-content">The patterns we see again and again. We'll show you where you are on the growth map and the single shift that breaks the cycle.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div><span class="agenda-icon">📣</span></div>
+        <div>
+          <div class="agenda-time">20–35 min</div>
+          <h4 class="agenda-content">Become a Marketing Machine</h4>
+          <p class="agenda-content">Attract patients who rebook and refer — insurance or not. The referral engine, Google strategy, and marketing system that filled four clinics without a big budget.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div><span class="agenda-icon">⚙️</span></div>
+        <div>
+          <div class="agenda-time">35–43 min</div>
+          <h4 class="agenda-content">The Admin & Systems Engine</h4>
+          <p class="agenda-content">You can't grow what you're too busy running. The systems we built to pull ourselves out of the day-to-day — so we could focus on growth instead of delivery.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div><span class="agenda-icon">🔄</span></div>
+        <div>
+          <div class="agenda-time">43–52 min</div>
+          <h4 class="agenda-content">Patient Retention & Staff Recruitment</h4>
+          <p class="agenda-content">Fix these two and almost everything else improves. The exact systems that took our retention past 70% and our team to 75 people.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div><span class="agenda-icon">💼</span></div>
+        <div>
+          <div class="agenda-time">52–60 min</div>
+          <h4 class="agenda-content">Clinic Valuation + Live Q&A</h4>
+          <p class="agenda-content">What your clinic is worth and how to build toward passive income, scale, or a sale. Then the floor is yours — 50 spots means real answers to real questions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE STACK -->
+<section class="value-sec sec">
+  <div class="inner">
+    <div class="value-head">
+      <span class="eyebrow" style="display:block;margin-bottom:1rem;">What You're Getting</span>
+      <h2>Everything in this <em>free</em> workshop.</h2>
+      <p style="margin-top:0.75rem">Here's exactly what you walk away with — and what it would cost if we charged for it.</p>
+    </div>
+    <div class="value-items">
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">🏆</span><div class="vi-text"><h4>The 7-Figure Clinic Growth Framework</h4><p>The complete system used to scale from 1 room to a 7-figure exit in Vancouver, BC</p></div></div><div class="vi-price"><span class="vi-was">$197</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">📣</span><div class="vi-text"><h4>Patient Marketing Playbook</h4><p>How to attract patients who rebook and refer — the system that filled four clinics</p></div></div><div class="vi-price"><span class="vi-was">$97</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">⚙️</span><div class="vi-text"><h4>Admin & Systems Engine Walkthrough</h4><p>Pull yourself out of the day-to-day so you can focus on growing, not just delivering</p></div></div><div class="vi-price"><span class="vi-was">$97</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">🔄</span><div class="vi-text"><h4>Patient Retention & Staff Recruitment Systems</h4><p>The two frameworks that took our retention past 70% and our team to 75</p></div></div><div class="vi-price"><span class="vi-was">$97</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">💼</span><div class="vi-text"><h4>Clinic Valuation Primer</h4><p>What your clinic is worth today and how to build toward passive income, scale, or a sale</p></div></div><div class="vi-price"><span class="vi-was">$67</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">📋</span><div class="vi-text"><h4>Personalised 90-Day Action Plan</h4><p>A written next-step document based on your specific stage — built during the session</p></div></div><div class="vi-price"><span class="vi-was">$197</span><span class="vi-val">Free</span></div></div>
+      <div class="value-item"><div class="vi-left"><span class="vi-icon">🤝</span><div class="vi-text"><h4>Live Q&A with Michael & Caitlyn</h4><p>Direct access to founders who've built and sold exactly what you're building</p></div></div><div class="vi-price"><span class="vi-was">Priceless</span><span class="vi-val">Free</span></div></div>
+    </div>
+    <div class="value-total">
+      <div class="vt-left"><h3>Total value</h3><p>What attendees consistently say they'd have paid</p></div>
+      <div class="vt-right"><span class="vt-was">$752+</span><span class="vt-free">Free</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec sec">
+  <div class="about-inner">
+    <div class="about-left">
+      <span class="eyebrow eyebrow-lt" style="display:block;margin-bottom:1.25rem;">Your Hosts</span>
+      <h2>Michael &<br>Caitlyn Coombe</h2>
+      <p class="about-body">We started with one treatment room and 50 patients in Vancouver, BC. <strong>No investors. No outside financing. No safety net.</strong></p>
+      <p class="about-body">Six years later: 4 clinics, 3,500 patients per month, a team of 75. Then we sold for seven figures.</p>
+      <p class="about-body"><strong>We coach you directly</strong> — not through a course library, not through a Facebook group. The experience we built over six years, applied personally to your situation.</p>
+      <div class="about-creds">
+        <div class="about-cred"><span class="cred-icon">🇨🇦</span> 4 clinics built in Vancouver, BC — zero financing</div>
+        <div class="about-cred"><span class="cred-icon">👥</span> 75-person team built from scratch</div>
+        <div class="about-cred"><span class="cred-icon">🏆</span> Seven-figure exit — clean deal, on our terms</div>
+        <div class="about-cred"><span class="cred-icon">🌍</span> Now coaching clinic owners worldwide</div>
+      </div>
+    </div>
+    <div>
+      <div class="about-card">
+        <div class="about-quote">"We made every mistake in the book. This workshop is everything we wish someone had told us in year one — delivered in 60 minutes, for free."</div>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat-num">6 Yrs</div><div class="about-stat-label">1 room to 4 clinics</div></div>
+          <div class="about-stat"><div class="about-stat-num">3,500</div><div class="about-stat-label">Patients per month at exit</div></div>
+          <div class="about-stat"><div class="about-stat-num">$0</div><div class="about-stat-label">Outside financing</div></div>
+          <div class="about-stat"><div class="about-stat-num">7-Fig</div><div class="about-stat-label">Vancouver, BC exit</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-sec sec">
+  <div class="inner">
+    <span class="eyebrow" style="display:block;margin-bottom:1rem;">What Attendees Say</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3vw,2.8rem);line-height:1.1;color:#F4EFE6;letter-spacing:-0.02em">From clinic owners<br>who've been in the <em style="font-style:italic;color:var(--gold-lt)">room.</em></h2>
+    <div class="testimonials">
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"I walked in expecting a pitch and walked out with more clarity about my clinic than I'd had in three years. The systems section alone changed how I think about my week. Signed up for the Academy the same day."</p><div class="testi-name">Sarah M.</div><div class="testi-role">Clinic Owner — Calgary, AB</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"The marketing section was a revelation. I changed my whole patient acquisition strategy after the workshop. Revenue was up 30% within 90 days. I genuinely didn't expect that from a free session."</p><div class="testi-name">James T.</div><div class="testi-role">Clinic Owner — Toronto, ON</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"I hadn't thought about what my clinic was worth or what stepping back could look like. The valuation section was a wake-up call — in the best way. I came back for the full Academy two weeks later."</p><div class="testi-name">Priya K.</div><div class="testi-role">Clinic Owner — Edmonton, AB</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec sec">
+  <div class="inner">
+    <span class="eyebrow" style="display:block;margin-bottom:1rem;">Questions</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.6rem);line-height:1.1;color:#F4EFE6">Everything you're<br>probably <em style="font-style:italic;color:var(--gold-lt)">wondering.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">Is this actually free? What's the catch?</div><div class="faq-a">Yes — completely free. No credit card, no obligation. At the end we'll briefly mention Clinic Launchpad Academy for those who want to go deeper, but the workshop content stands completely on its own. No hard sell.</div></div>
+      <div class="faq-item"><div class="faq-q">I haven't opened my clinic yet. Is this relevant to me?</div><div class="faq-a">Absolutely — arguably more valuable before you open than after. You'll learn how to avoid the most common first-year mistakes and how to set up for growth from day one.</div></div>
+      <div class="faq-item"><div class="faq-q">I've had my clinic for years. Will I learn anything new?</div><div class="faq-a">Almost certainly yes. The admin systems and exit planning sections especially tend to change how experienced owners think about their business. Come with your specific questions.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this specifically for Canadian clinic owners?</div><div class="faq-a">The framework was built in Canada and is especially relevant to the Canadian market. We also work with clinic owners across North America and worldwide — the core growth principles apply everywhere.</div></div>
+      <div class="faq-item"><div class="faq-q">Will there be a replay if I can't attend live?</div><div class="faq-a">Register anyway — we'll notify you of upcoming sessions and share replay availability. The live session is always better because of the Q&A, but we don't want you to miss the content.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-inner">
+    <h2>One hour.<br>The whole <em>playbook.</em><br>Completely free.</h2>
+    <p>Nothing to lose. A real roadmap to gain. Register below and we'll send you everything you need — including a short pre-workshop guide.</p>
+    <div class="final-form">
+      <input type="text" placeholder="First name">
+      <input type="email" placeholder="Email address">
+      <input type="text" placeholder="Clinic name (or 'not open yet')">
+      <button>Save My Spot →</button>
+    </div>
+    <p class="final-note">Free · No pitch · No spam · Unsubscribe any time</p>
+  </div>
+</section>
+
+<footer>
+  <div><div class="footer-logo-main">Clinic Launchpad</div><span class="footer-logo-sub">Academy</span></div>
+  <div class="footer-links">
+    <a href="clinic-launchpad-home.html">Home</a><a href="clinic-launchpad-about.html">About</a>
+    <a href="clinic-launchpad-academy.html">Academy</a><a href="#">Privacy</a><a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Clinic Launchpad Academy · Michael & Caitlyn Coombe</div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{const o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!o)item.classList.add('open')})});
+</script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Clinic Launchpad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#181512;--cream:#F4EFE6;--warm:#FAF7F2;--forest:#253D30;--moss:#4A7056;--gold:#B8873A;--gold-lt:#D4A85C;--mid:#5A5450;--rule:rgba(24,21,18,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+.announce-bar{background:var(--forest);color:rgba(244,239,230,0.9);text-align:center;padding:0.65rem 2rem;font-size:0.8rem;position:fixed;top:0;left:0;right:0;z-index:501}
+.announce-bar a{color:var(--gold-lt);text-decoration:none;font-weight:600}
+
+nav{position:fixed;top:2.35rem;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(244,239,230,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--forest);line-height:1.2;text-decoration:none}
+.nav-logo-sub{display:block;font-family:'Jost',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-link{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s}
+.nav-link:hover,.nav-link.active{color:var(--forest)}
+.nav-phone{font-size:0.82rem;font-weight:600;color:var(--forest);text-decoration:none}
+.nav-btn{background:var(--forest);color:var(--cream);text-decoration:none;padding:0.65rem 1.5rem;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:background 0.2s}
+.nav-btn:hover{background:var(--gold)}
+
+/* SHARED */
+.eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
+.eyebrow-lt{color:var(--gold-lt)}
+.serif{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.1;letter-spacing:-0.02em}
+.serif em{font-style:italic}
+.serif-dark{color:#F4EFE6}.serif-dark em{color:var(--gold-lt)}
+.serif-light{color:var(--ink)}.serif-light em{color:var(--forest)}
+.body-md{font-size:1.05rem;line-height:1.85;font-weight:300}
+.body-dark{color:#A8C0B0}.body-dark strong{color:#E8E0D8;font-weight:500}
+.body-light{color:var(--mid)}.body-light strong{color:var(--ink);font-weight:600}
+
+/* HERO */
+.hero{background:var(--forest);padding:11rem 4rem 7rem;position:relative;overflow:hidden}
+.hero::before{content:'OUR STORY';position:absolute;right:-2rem;bottom:-3rem;font-family:'Playfair Display',serif;font-size:11rem;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;white-space:nowrap}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1.0;letter-spacing:-0.03em;color:#F4EFE6;margin-top:1.5rem;max-width:800px}
+.hero h1 em{font-style:italic;color:var(--gold-lt)}
+.hero-sub{font-size:1.2rem;line-height:1.8;color:#A8C0B0;max-width:600px;margin-top:2rem;font-weight:300}
+
+/* INTRO */
+.intro{background:var(--cream);padding:7rem 4rem}
+.intro-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.intro-body{font-size:1.05rem;line-height:1.9;color:var(--mid);font-weight:300;margin-bottom:1.25rem}
+.intro-body strong{color:var(--ink);font-weight:600}
+.photo-box{background:var(--forest);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.photo-box-label{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(244,239,230,0.2);text-align:center;padding:2rem}
+.photo-caption{font-size:0.78rem;color:var(--mid);text-align:center;margin-top:1rem;letter-spacing:0.04em}
+
+/* CHAPTERS */
+.chapters-section{background:var(--ink);padding:7rem 4rem}
+.chapters-inner{max-width:1100px;margin:0 auto}
+.chapters-header{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:5rem}
+.chapters{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.06)}
+.chapter{background:#1A1612;display:grid;grid-template-columns:140px 1fr;gap:3rem;padding:3rem;align-items:start;transition:background 0.2s}
+.chapter:hover{background:#201C18}
+.chapter-year{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--gold-lt);line-height:1.4;padding-top:0.2rem}
+.chapter-icon{font-size:1.75rem;margin-bottom:0.75rem;display:block}
+.chapter h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:#F0EAE0;margin-bottom:0.75rem;line-height:1.2}
+.chapter p{font-size:0.95rem;color:#908880;line-height:1.8;font-weight:300}
+.chapter p strong{color:#C8C0B8;font-weight:500}
+
+/* ROLES */
+.roles{background:var(--warm);padding:7rem 4rem}
+.roles-inner{max-width:1100px;margin:0 auto}
+.roles-header{margin-bottom:4rem}
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
+.role-card{background:var(--warm);padding:3.5rem 3rem}
+.role-icon{font-size:2.5rem;margin-bottom:1.25rem;display:block}
+.role-name{font-family:'Playfair Display',serif;font-size:2rem;color:var(--forest);margin-bottom:0.3rem}
+.role-title{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.role-body{font-size:1rem;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:2rem}
+.role-list{list-style:none}
+.role-list li{font-size:0.9rem;color:var(--mid);padding:0.55rem 0 0.55rem 1.25rem;border-top:1px solid var(--rule);position:relative;line-height:1.4}
+.role-list li::before{content:'›';position:absolute;left:0;color:var(--moss)}
+.role-list li:last-child{border-bottom:1px solid var(--rule)}
+
+/* VALUES */
+.values{background:var(--forest);padding:7rem 4rem;position:relative;overflow:hidden}
+.values::before{content:'VALUES';position:absolute;right:-2rem;bottom:-3rem;font-family:'Playfair Display',serif;font-size:14rem;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none}
+.values-inner{max-width:1100px;margin:0 auto}
+.values-header{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:4rem}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08)}
+.value-card{background:rgba(37,61,48,0.5);padding:2.5rem 2rem;transition:background 0.25s}
+.value-card:hover{background:rgba(37,61,48,0.9)}
+.value-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.value-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(212,168,92,0.15);line-height:1;margin-bottom:0.5rem}
+.value-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#F0EAE0;margin-bottom:0.75rem}
+.value-body{font-size:0.92rem;color:#8AAA98;line-height:1.75;font-weight:300}
+
+/* COACHING EMPHASIS */
+.coaching-emphasis{background:var(--cream);padding:6rem 4rem;border-top:1px solid var(--rule)}
+.coaching-emphasis-inner{max-width:900px;margin:0 auto;text-align:center}
+.coaching-emphasis h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.5rem}
+.coaching-emphasis h2 em{font-style:italic;color:var(--forest)}
+.coaching-emphasis p{font-size:1.15rem;line-height:1.85;color:var(--mid);font-weight:300;max-width:650px;margin:0 auto 2.5rem}
+.coaching-emphasis p strong{color:var(--ink);font-weight:600}
+.btn-primary{background:var(--forest);color:var(--cream);text-decoration:none;padding:1.1rem 2.5rem;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;display:inline-block}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px)}
+
+/* DIFFERENCE */
+.difference{background:var(--warm);padding:7rem 4rem;border-top:1px solid var(--rule)}
+.difference-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.diff-points{display:flex;flex-direction:column;gap:1px;background:var(--rule)}
+.diff-pt{background:var(--warm);padding:1.75rem 2rem;display:flex;gap:1.25rem;align-items:flex-start;transition:background 0.2s}
+.diff-pt:hover{background:var(--cream)}
+.diff-icon{color:var(--gold);font-size:1.3rem;flex-shrink:0;margin-top:0.05rem}
+.diff-text h4{font-size:0.95rem;font-weight:600;color:var(--ink);margin-bottom:0.25rem}
+.diff-text p{font-size:0.88rem;color:var(--mid);line-height:1.6;font-weight:300}
+
+/* CTA */
+.cta{background:var(--gold);padding:7rem 4rem;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'START';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:18vw;color:rgba(24,21,18,0.05);white-space:nowrap;pointer-events:none}
+.cta-inner{max-width:700px;margin:0 auto;position:relative}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem}
+.cta h2 em{font-style:italic}
+.cta p{font-size:1.1rem;color:rgba(24,21,18,0.65);line-height:1.75;font-weight:300;margin-bottom:2.5rem}
+.btn-dark{display:inline-block;background:var(--ink);color:#F4EFE6;text-decoration:none;padding:1.1rem 2.5rem;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s}
+.btn-dark:hover{background:var(--forest);transform:translateY(-2px)}
+
+footer{background:var(--ink);padding:3rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-logo-main{font-family:'Playfair Display',serif;font-size:1.1rem;color:#F4EFE6}
+.footer-logo-sub{display:block;font-size:0.55rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:0.1rem}
+.footer-copy{font-size:0.78rem;color:#504840}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.78rem;color:#605850;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{animation:fadeUp 0.8s ease backwards}
+.eyebrow{animation-delay:0.1s}.hero h1{animation-delay:0.2s}.hero-sub{animation-delay:0.35s}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  .nav-right .nav-link{display:none}
+  .hero{padding:8rem 1.5rem 5rem}
+  .intro,.chapters-section,.roles,.values,.coaching-emphasis,.difference,.cta{padding:4rem 1.5rem}
+  .intro-inner,.chapters-header,.values-header,.difference-inner{grid-template-columns:1fr;gap:2.5rem}
+  .roles-grid,.values-grid{grid-template-columns:1fr}
+  .chapter{grid-template-columns:1fr;gap:0.5rem}
+  footer{padding:2rem 1.5rem;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="announce-bar">Opening a clinic · Growing one · Planning your exit — <a href="clinic-launchpad-workshop.html">Join the free workshop →</a></div>
+
+<nav>
+  <a href="clinic-launchpad-home.html" class="nav-logo">Clinic Launchpad<span class="nav-logo-sub">Academy</span></a>
+  <div class="nav-right">
+    <a href="clinic-launchpad-home.html" class="nav-link">Home</a>
+    <a href="clinic-launchpad-about.html" class="nav-link active">About</a>
+    <a href="clinic-launchpad-academy.html" class="nav-link">Academy</a>
+    <a href="clinic-launchpad-workshop.html" class="nav-link">Free Workshop</a>
+    <a href="tel:+1XXXXXXXXXX" class="nav-phone">+1 (XXX) XXX-XXXX</a>
+    <a href="clinic-launchpad-workshop.html" class="nav-btn">Free Workshop</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow eyebrow-lt">Our Story</span>
+    <h1>We had a clinic.<br>It was struggling.<br><em>Then everything changed.</em></h1>
+    <p class="hero-sub">We were just like you — brilliant at the work, completely lost in the business. Here's what happened next.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-inner">
+    <div>
+      <span class="eyebrow">Where It Started</span>
+      <h2 class="serif serif-light" style="margin-bottom:2rem;">Caitlyn opened it.<br>Michael helped <em>save it.</em></h2>
+      <p class="intro-body">Caitlyn is an exceptional massage therapist. She opened her clinic the way most clinic owners do — with passion, skill, and almost no business knowledge. <strong>The location wasn't right. The recruiting approach was wrong. There was no financial plan.</strong></p>
+      <p class="intro-body">None of that was her fault. She was never taught these things. The training that made her brilliant at her craft said nothing about leases, marketing, hiring, or cash flow.</p>
+      <p class="intro-body">Michael came from a business background. He looked at what Caitlyn had built and saw something worth saving — and scaling. <strong>Together, they rebuilt it from the ground up.</strong> Through trial and error, applying business experience from other industries to the clinic world.</p>
+      <p class="intro-body">Six years later: 4 clinic locations, 3,500 patients per month, a team of 75 — and a seven-figure exit. <strong>That hard-won knowledge is what we now give directly to you.</strong></p>
+    </div>
+    <div>
+      <div class="photo-box"><p class="photo-box-label">Michael & Caitlyn Coombe<br>Vancouver, BC</p></div>
+      <p class="photo-caption">Add your photo here</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTERS -->
+<section class="chapters-section">
+  <div class="chapters-inner">
+    <div class="chapters-header">
+      <div>
+        <span class="eyebrow eyebrow-lt">The Real Story</span>
+        <h2 class="serif serif-dark">Six years.<br>Every stage.<br><em>Nothing held back.</em></h2>
+      </div>
+      <p class="body-md body-dark">This isn't a highlight reel. Every stage shaped what we teach — including the hardest decision we ever made. <strong>We chose bigger. Here's how it went.</strong></p>
+    </div>
+    <div class="chapters">
+      <div class="chapter">
+        <div class="chapter-year">Year 1<br>The Beginning</div>
+        <div>
+          <span class="chapter-icon">🌱</span>
+          <h3>One room. Fifty patients. No roadmap.</h3>
+          <p>Caitlyn had been running the clinic for a while before Michael got involved. She was talented, her patients loved her, but the business wasn't working. <strong>Wrong location. No recruitment strategy. No financial plan.</strong> The first thing they did was treat it like a real business. That changed everything.</p>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-year">Years 2–3<br>Finding the Engine</div>
+        <div>
+          <span class="chapter-icon">⚙️</span>
+          <h3>Building the systems that made growth possible.</h3>
+          <p>They rebuilt the marketing from scratch. Figured out how to recruit practitioners properly — <strong>marketing to therapists the same way they marketed to patients.</strong> Patient retention became a system. Revenue became predictable. By year three they had enough confidence to open a second location — self-funded, zero outside money.</p>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-year">Years 4–5<br>The Hardest Decision</div>
+        <div>
+          <span class="chapter-icon">🤔</span>
+          <h3>Settle for a lifestyle business — or push for the exit?</h3>
+          <p>By year four they had good income, a good team, a good life. <strong>The easy choice was to stay comfortable.</strong> The harder question: what is this actually worth? What could it be worth? They made the decision to build for an exit. They pushed. Two more locations. They documented everything. They built the kind of business a buyer would want to own.</p>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="chapter-year">Year 6<br>The Exit</div>
+        <div>
+          <span class="chapter-icon">🏆</span>
+          <h3>Seven figures. On their terms. Clean deal.</h3>
+          <p>They sold their Vancouver clinic network for seven figures. Zero outside financing throughout. <strong>The buyer wasn't just buying a business — they were buying something that worked without Michael and Caitlyn in it.</strong> That's what made it worth what it was.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles">
+  <div class="roles-inner">
+    <div class="roles-header">
+      <span class="eyebrow">How We Work Together</span>
+      <h2 class="serif serif-light" style="margin-bottom:0;">Two people. <em>Different strengths.</em> One shared standard.</h2>
+    </div>
+    <div class="roles-grid">
+      <div class="role-card">
+        <span class="role-icon">📊</span>
+        <div class="role-name">Michael</div>
+        <span class="role-title">Business, Operations & Growth</span>
+        <p class="role-body">Michael's focus was always the engine of the business — the systems, the numbers, the strategy. He built the frameworks that let the clinic grow without depending on any one person, including himself. 20 years of marketing experience including websites, brand building, and paid advertising.</p>
+        <ul class="role-list">
+          <li>Business strategy & growth planning</li>
+          <li>Marketing engine — Google, Meta, SEO, brand</li>
+          <li>Operations & systems design</li>
+          <li>Financial modelling & cash flow</li>
+          <li>Location strategy & lease negotiation</li>
+          <li>Exit planning & valuation</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <span class="role-icon">❤️</span>
+        <div class="role-name">Caitlyn</div>
+        <span class="role-title">People, Culture & Patient Experience</span>
+        <p class="role-body">Caitlyn's genius was in the human side of the business. She understood what patients needed to feel to come back, and what practitioners needed to feel to stay. That's not soft — it's the hardest and most valuable thing to build in a clinic.</p>
+        <ul class="role-list">
+          <li>Patient communication & experience</li>
+          <li>Staff retention & team culture</li>
+          <li>Clinic environment & aesthetics</li>
+          <li>Team gatherings & morale</li>
+          <li>Practitioner onboarding & care</li>
+          <li>Community & referral relationships</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-inner">
+    <div class="values-header">
+      <div>
+        <span class="eyebrow eyebrow-lt">What We Stand For</span>
+        <h2 class="serif serif-dark">The values that shaped<br>everything we built — <em>and teach.</em></h2>
+      </div>
+      <p class="body-md body-dark">These aren't words on a wall. Every one came from a real decision — often when it would have been easier to go the other way. <strong>They're why our team stayed, our patients came back, and our business was worth buying.</strong></p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">👥</span>
+        <div class="value-title">Team First. Always.</div>
+        <p class="value-body">If a patient was wronged, we made it right. If a team member was struggling, we showed up. Happy practitioners create happy patients. It's not a platitude — it's a business model.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🌿</span>
+        <div class="value-title">Ethical Growth. No Shortcuts.</div>
+        <p class="value-body">We built four clinics with zero outside financing. Not because we couldn't access capital — because we wanted to build something we actually owned and controlled at every step.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🤲</span>
+        <div class="value-title">Practitioners Are People. Not Billings.</div>
+        <p class="value-body">We empowered our team, didn't micromanage, and trusted them to do what they were trained to do brilliantly. That's why they stayed — and why they referred their friends to join us.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">📍</span>
+        <div class="value-title">Location Is Everything.</div>
+        <p class="value-body">A mediocre clinic in the right location beats a brilliant clinic in the wrong one. We treat location decisions like investment decisions. Getting this right is one of the highest-leverage moves you'll ever make.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">⭐</span>
+        <div class="value-title">Above and Beyond Value.</div>
+        <p class="value-body">We wanted every patient and team member to feel their experience with us was the best available. The quality of the massage, the feel of the room, the follow-up. Details aren't details — they're the brand.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🏗️</span>
+        <div class="value-title">Build Something Worth Owning.</div>
+        <p class="value-body">Clinic owners deserve a path that doesn't destroy their health or their love of the work. A well-built clinic gives you back your time, your income, and your life. That's not a bonus — it's the whole point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WE COACH YOU -->
+<section class="coaching-emphasis">
+  <div class="coaching-emphasis-inner">
+    <span class="eyebrow" style="display:block;margin-bottom:1rem;">How We Help</span>
+    <h2>We coach you.<br><em>Directly.</em></h2>
+    <p>This isn't a course you watch alone. <strong>We coach you personally</strong> — with curriculum, 1-on-1 access to Michael and Caitlyn, and a network of clinic owners who actively work together. The experience we built over six years, delivered directly to you.</p>
+    <a href="clinic-launchpad-workshop.html" class="btn-primary">Start with the Free Workshop</a>
+  </div>
+</section>
+
+<!-- WHAT MAKES US DIFFERENT -->
+<section class="difference">
+  <div class="difference-inner">
+    <div>
+      <span class="eyebrow">Why Clinic Launchpad</span>
+      <h2 class="serif serif-light" style="margin-bottom:1.5rem;">What makes us<br><em>different</em> from every<br>other program.</h2>
+      <p class="body-md body-light">There are other clinic coaching programs. Most are run by people who grew clinics. <strong>We're one of the only programs run by people who built, scaled, and sold one.</strong> That changes everything we teach.</p>
+    </div>
+    <div class="diff-points">
+      <div class="diff-pt">
+        <span class="diff-icon">🏆</span>
+        <div class="diff-text">
+          <h4>We actually sold — for seven figures</h4>
+          <p>Exit planning isn't theory. We built toward a number, hit it, and closed the deal in Vancouver, BC. That experience is in everything we teach.</p>
+        </div>
+      </div>
+      <div class="diff-pt">
+        <span class="diff-icon">💰</span>
+        <div class="diff-text">
+          <h4>Zero financing — by design</h4>
+          <p>We scaled four clinics without investors or loans. Our framework works from wherever you are, without capital you don't have.</p>
+        </div>
+      </div>
+      <div class="diff-pt">
+        <span class="diff-icon">🎯</span>
+        <div class="diff-text">
+          <h4>20 years of marketing experience</h4>
+          <p>Michael built the marketing engine that filled four clinics. Google, Meta, SEO, brand, website — we teach it all from real experience.</p>
+        </div>
+      </div>
+      <div class="diff-pt">
+        <span class="diff-icon">🔗</span>
+        <div class="diff-text">
+          <h4>The CL Network — real cross-clinic referrals</h4>
+          <p>Members refer patients to each other across cities, share hiring leads, and access preferred vendor pricing. A genuine business asset.</p>
+        </div>
+      </div>
+      <div class="diff-pt">
+        <span class="diff-icon">📱</span>
+        <div class="diff-text">
+          <h4>Done-for-you marketing via LeadLocalSEO</h4>
+          <p>Academy members can outsource their patient marketing entirely — freeing them to focus on building the business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Ready to build<br>something real? <em>Start here.</em></h2>
+    <p>One free session with Michael and Caitlyn. The real framework. No pitch. Just the playbook — and how it applies to where you are right now.</p>
+    <a href="clinic-launchpad-workshop.html" class="btn-dark">Join the Free Workshop →</a>
+  </div>
+</section>
+
+<footer>
+  <div><div class="footer-logo-main">Clinic Launchpad</div><span class="footer-logo-sub">Academy</span></div>
+  <div class="footer-links">
+    <a href="clinic-launchpad-home.html">Home</a>
+    <a href="clinic-launchpad-academy.html">Academy</a>
+    <a href="clinic-launchpad-workshop.html">Free Workshop</a>
+    <a href="#">Privacy</a><a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Clinic Launchpad Academy · Michael & Caitlyn Coombe</div>
+</footer>
+</body>
+</html>
